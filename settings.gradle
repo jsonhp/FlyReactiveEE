@@ -1,0 +1,4 @@
+include ':FlyReactiveDomain'
+include ':FlyReactiveWeb'
+
+rootProject.name = 'FlyReactiveDomain'
