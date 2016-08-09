@@ -14,8 +14,8 @@ import rx.schedulers.Schedulers;
 @Path("/client")
 public class ClientService {
 	
-	@Inject
-	ClientDao clientDao;
+	//@Inject
+	ClientDao clientDao = new ClientDao();
 
 	@GET
 	@Path("/getByIdentification/{identification}")
