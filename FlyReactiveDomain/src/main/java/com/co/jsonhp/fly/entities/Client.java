@@ -18,7 +18,9 @@ public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id, identification;
+	private int id;
+	
+	private int identification;
 	
 	private String name, lastname;
 
