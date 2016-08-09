@@ -20,7 +20,6 @@ public class ClientService {
 	@GET
 	@Path("/getByIdentification/{identification}")
 	public void getClientByIdentification(@PathParam("identification") int identification, @Suspended final AsyncResponse asyncResponse) {
-		System.out.println(clientDao);
 		clientDao.getClientByIdentification(identification)
 			.subscribeOn(Schedulers.computation())
 			.doOnError(throwable -> asyncResponse.resume("Error: " + throwable.getMessage()))
