@@ -11,6 +11,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.co.jsonhp.fly.dao.ClientDao;
 import com.co.jsonhp.fly.entities.Client;
+import com.co.jsonhp.fly.exceptions.ClientNotFoundException;
 
 import rx.Observable;
 
@@ -27,7 +28,7 @@ public class ClientServiceTest {
 	AsyncResponse asyncResponse;
 	
 	@Test
-	public void mustObtainClientByIdentification() {
+	public void mustObtainClientByIdentification() throws ClientNotFoundException {
 		//Arrange
 		int identification = 1234;
 		Client clientExpected = new Client();

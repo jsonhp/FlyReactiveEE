@@ -2,6 +2,7 @@ package com.co.jsonhp.fly.dao;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -16,6 +17,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.co.jsonhp.fly.entities.Client;
+import com.co.jsonhp.fly.exceptions.ClientNotFoundException;
 
 import rx.Observable;
 
@@ -48,7 +50,7 @@ public class ClientDaoTest {
 	}
 	
 	@Test
-	public void mustObtainClientByIdentificaction() {
+	public void mustObtainClientByIdentificaction() throws ClientNotFoundException {
 		//Arrange
 		int identificationClient = 1075274577;
 		Mockito.when(entityManager.createNamedQuery(queryFindByIdentification, Client.class)).thenReturn(query);
@@ -62,6 +64,24 @@ public class ClientDaoTest {
 		//Assert
 		assertEquals(client,receivedClient);
 		Mockito.verify(query).setParameter("identification", identificationClient);
+	}
+	
+	@Test(expected = ClientNotFoundException.class)
+	public void mustThrowIndexException() throws ClientNotFoundException {
+		//Arrange
+		int identificationClient = 1075274578;
+		List<Client> listClients = new ArrayList<Client>();
+		Mockito.when(entityManager.createNamedQuery(queryFindByIdentification, Client.class)).thenReturn(query);
+		Mockito.when(query.getResultList()).thenReturn(listClients);
+		//Mockito.when(query.getResultList().get(0)).thenReturn(client);
+		
+		//Act
+		clientDao.getClientByIdentification(identificationClient);
+		
+		//Assert
+		Mockito.verify(query).setParameter("identification", identificationClient);
+		
+		
 	}
 	
 }

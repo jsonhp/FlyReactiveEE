@@ -10,6 +10,7 @@ import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.MediaType;
 
 import com.co.jsonhp.fly.dao.ClientDao;
+import com.co.jsonhp.fly.exceptions.ClientNotFoundException;
 
 import rx.schedulers.Schedulers;
 
@@ -22,8 +23,7 @@ public class ClientService {
 	@GET
 	@Path("/getByIdentification/{identification}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public void getClientByIdentification(@PathParam("identification") int identification, @Suspended final AsyncResponse asyncResponse) {
-		System.out.println(clientDao);
+	public void getClientByIdentification(@PathParam("identification") int identification, @Suspended final AsyncResponse asyncResponse) throws ClientNotFoundException {
 		clientDao.getClientByIdentification(identification)
 			.subscribeOn(Schedulers.computation())
 			.doOnError(throwable -> asyncResponse.resume("Error: " + throwable.getMessage()))

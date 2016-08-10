@@ -31,6 +31,7 @@ public class Transactional {
 			if (notReadOnly)
 				if (noRollbackFor.contains(e))
 					tx.rollback();
+			throw e;
 
 		}
 		if (notReadOnly)
