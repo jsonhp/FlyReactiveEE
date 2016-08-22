@@ -19,8 +19,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import com.co.jsonhp.fly.entities.Client;
 import com.co.jsonhp.fly.exceptions.ClientNotFoundException;
 
-import rx.Observable;
-
 @RunWith(MockitoJUnitRunner.class)
 public class ClientDaoTest {
 
@@ -54,12 +52,12 @@ public class ClientDaoTest {
 		//Arrange
 		int identificationClient = 1075274577;
 		Mockito.when(entityManager.createNamedQuery(queryFindByIdentification, Client.class)).thenReturn(query);
+		Mockito.when(query.setParameter("identification", identificationClient)).thenReturn(query);
 		Mockito.when(query.getResultList()).thenReturn(resultList);
 		Mockito.when(query.getResultList().get(0)).thenReturn(client);
 		
 		//Act
-		Observable<Client> oservableClient = clientDao.getClientByIdentification(identificationClient);
-		oservableClient.subscribe(c -> receivedClient = c);
+		receivedClient = clientDao.getClientByIdentificationImp(identificationClient);
 		
 		//Assert
 		assertEquals(client,receivedClient);
@@ -72,6 +70,7 @@ public class ClientDaoTest {
 		int identificationClient = 1075274578;
 		List<Client> listClients = new ArrayList<Client>();
 		Mockito.when(entityManager.createNamedQuery(queryFindByIdentification, Client.class)).thenReturn(query);
+		Mockito.when(query.setParameter("identification", identificationClient)).thenReturn(query);
 		Mockito.when(query.getResultList()).thenReturn(listClients);
 		//Mockito.when(query.getResultList().get(0)).thenReturn(client);
 		
@@ -79,9 +78,7 @@ public class ClientDaoTest {
 		clientDao.getClientByIdentification(identificationClient);
 		
 		//Assert
-		Mockito.verify(query).setParameter("identification", identificationClient);
-		
-		
+		Mockito.verify(query).setParameter("identification", identificationClient);	
 	}
 	
 }

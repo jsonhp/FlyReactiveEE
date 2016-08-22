@@ -1,0 +1,1 @@
+var hola = "Hola, :V Locooooo Cómo estoy?; TNS";

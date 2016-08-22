@@ -27,9 +27,9 @@ public class ClientDao {
 	
 	@TransactionalIT
 	public Client getClientByIdentificationImp(int identification) throws ClientNotFoundException {
-		final List<Client> list = entityManager.createNamedQuery(queryFindByIdentification, Client.class)
-		 .setParameter("identification", identification)
-		 .getResultList();
+		List<Client> list = entityManager.createNamedQuery(queryFindByIdentification, Client.class)
+				.setParameter("identification", identification)
+				.getResultList();
 		
 		if (list.isEmpty()) {
 			throw new ClientNotFoundException("Cliente no encontrado");
