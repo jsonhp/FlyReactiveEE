@@ -47,8 +47,10 @@ public class ClientDaoTest {
 		client.setLastname("HP");
 	}
 	
+	
+	
 	@Test
-	public void mustObtainClientByIdentificaction() throws ClientNotFoundException {
+	public void mustObtainClientByIdentificactionImp() throws ClientNotFoundException {
 		//Arrange
 		int identificationClient = 1075274577;
 		Mockito.when(entityManager.createNamedQuery(queryFindByIdentification, Client.class)).thenReturn(query);
@@ -65,7 +67,7 @@ public class ClientDaoTest {
 	}
 	
 	@Test(expected = ClientNotFoundException.class)
-	public void mustThrowIndexException() throws ClientNotFoundException {
+	public void mustThrowClientNotFoundException() throws ClientNotFoundException {
 		//Arrange
 		int identificationClient = 1075274578;
 		List<Client> listClients = new ArrayList<Client>();
@@ -75,7 +77,7 @@ public class ClientDaoTest {
 		//Mockito.when(query.getResultList().get(0)).thenReturn(client);
 		
 		//Act
-		clientDao.getClientByIdentification(identificationClient);
+		clientDao.getClientByIdentificationImp(identificationClient);
 		
 		//Assert
 		Mockito.verify(query).setParameter("identification", identificationClient);	

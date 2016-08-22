@@ -18,9 +18,10 @@ public class ClientDao {
 	@PersistenceContext
 	EntityManager entityManager;
 	
+	List<Client> clients;
+	
 	@TransactionalIT
 	public Observable<Client> getClientByIdentification(int identification) throws ClientNotFoundException  {
-		Observable.just(getClientByIdentificationImp(identification));
 		return Observable.fromCallable(() -> getClientByIdentificationImp(identification));
 		
 	}
@@ -36,6 +37,5 @@ public class ClientDao {
 		}
 		
 		return list.get(0);		
-	}	
-	
+	}		
 }
