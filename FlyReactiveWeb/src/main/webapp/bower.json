@@ -1,0 +1,25 @@
+{
+  "name": "webapp",
+  "authors": [
+    "Jeisson Herrera Peña <jeisson.herrera@techandsolve.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "keywords": [
+    "webapp"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.5.7",
+    "angular-route": "^1.5.7",
+    "bootstrap": "^3.3.6"
+  }
+}

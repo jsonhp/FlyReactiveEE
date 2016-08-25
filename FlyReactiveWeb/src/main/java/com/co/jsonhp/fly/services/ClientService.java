@@ -14,6 +14,8 @@ import com.co.jsonhp.fly.exceptions.ClientNotFoundException;
 
 import rx.schedulers.Schedulers;
 
+//Example
+
 @Path("/client")
 public class ClientService {
 	
