@@ -1,0 +1,21 @@
+<section class="login-component" *ng-if="!isLogged">
+  <div class="control-group">
+    <div>
+      <label for="title">Luchirris Tns</label>
+    </div>
+    <div>
+      <input name="username" #username>
+    </div>
+  </div>
+  <div class="control-group">
+    <div>
+      <label for="link">Password:</label>
+    </div>
+    <div>
+      <input type="password" name="password" #password>
+    </div>
+  </div>
+  <button class="" (click)="login(username, password)">Login</button>
+</section>
+<protected-component *ng-if="isLogged" ></protected-component>
+<section class="logout" *ng-if="isLogged"><button (click)="logout()">Logout</button>

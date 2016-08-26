@@ -1,1 +1,30 @@
-JSon
+<html>
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendiendo Angular 2</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+  
+  	<div class="container">
+  		<cabecera></cabecera>
+    	<cabecera2></cabecera2>
+    	<saludador></saludador>
+    	<main>Loading...</main>
+  	</div>
+  	
+  	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="node_modules/es6-shim/es6-shim.js"></script>
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script>
+		System.config({
+			packages: {'app': {defaultExtension: 'js'}}
+		});
+		System.import('app/app');
+    </script>
+    <script src="app/app.js"></script>
+  </body>
+</html>

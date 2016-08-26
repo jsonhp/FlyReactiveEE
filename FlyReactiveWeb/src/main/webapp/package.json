@@ -1,7 +1,7 @@
 {
   "name": "webapp",
   "version": "1.0.0",
-  "description": "Fly Reactive with gulp",
+  "description": "Fly Reactive with gulp and Angular 2(TypeScript)",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +16,19 @@
     "gulp-cli": "^1.2.2",
     "gulp-concat": "^2.6.0",
     "gulp-uglify": "^2.0.0",
-    "gulp-watch": "^4.3.9"
+    "gulp-watch": "^4.3.9",
+	"angular2": "2.0.0-alpha.44",
+	"es6-shim": "^0.33.13",
+    "systemjs": "0.19.2",
+    "typescript": "^1.6.2",
+    "connect": "^3.4.1",
+    "serve-static": "^1.11.1",
+    "live-server": "^0.8.2",
+    "bootstrap": "3.3.7",
+    "jquery": "3.1.0"
+  },
+  "scripts": {
+    "tsc": "tsc -p app -w",
+    "start": "live-server --open=index.html"
   }
 }

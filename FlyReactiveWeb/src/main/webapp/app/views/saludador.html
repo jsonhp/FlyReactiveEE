@@ -1,0 +1,6 @@
+<div class="row">
+	<h1>Hola {{yourName}}</h1>
+	<input #name placeholder="Pon tu nombre aquí"> <button (click)="setName(name)">Saludame</button>
+	<h2> Hasta la fecha e saludado a: </h2>
+	<ul><li *ng-for="#saludado of saludados">{{ saludado }} </li></ul>
+</div>

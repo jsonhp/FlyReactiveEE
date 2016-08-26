@@ -16,4 +16,13 @@ gulp.task('demo', function () {
 	});
 });
 
-gulp.task('default', ['loco','demo']);
+gulp.task('demo2', function () {
+	return watch('app/*.js', function() {
+		gulp.src('app/*.js')
+			.pipe(concat('todo2.js'))
+			.pipe(uglify())
+			.pipe(gulp.dest('app/build/'));		
+	});
+});
+
+gulp.task('default', ['loco','demo','demo2']);
